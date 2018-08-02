@@ -4,3 +4,4 @@ export {SelectField} from "./SelectField";
 export {PhoneField} from "./PhoneField";
 export { AmountField } from './AmountField';
 export { DatePickerField } from './DatePickerField';
+export { UploadField } from './UploadField';
