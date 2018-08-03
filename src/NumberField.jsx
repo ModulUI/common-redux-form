@@ -3,7 +3,7 @@ import {Field} from 'redux-form/immutable';
 import NumberRender from './renderControl/NumberRender';
 import {numberHelper} from 'modul-helpers';
 import {getRequiredValidator} from './validationHelpers/formFieldHelpers';
-import { validator, isValidNumber } from './validationHelpers/utils';
+import {validator, isValidNumber} from './validationHelpers/utils';
 import PropTypes from 'prop-types';
 
 
@@ -34,28 +34,46 @@ class NumberField extends React.Component {
 		float: PropTypes.bool //для значений с запятой
 	};
 
+	constructor(props) {
+		super(props);
+		this.validators = [];
+		this._createValidators(props);
+	}
+
+	componentWillReceiveProps(nextProps) {
+		this._createValidators(nextProps);
+	}
+
+	_createValidators(props) {
+		const {required, requiredDisable, validate, invalidNumberError} = props;
+		this.validators.length = 0;
+		const requiredFieldValidator = getRequiredValidator({
+			required: required,
+			requiredDisable: requiredDisable
+		});
+
+		const validNumber = validator(invalidNumberError, isValidNumber);
+
+		this.validators.push(...requiredFieldValidator, validNumber);
+
+		if (validate) {
+			if (Array.isArray(validate))
+				this.validators.push(...validate);
+			else
+				this.validators.push(validate);
+		}
+	}
+
 	render() {
 		const {
-			required,
-			requiredDisable,
-			validate = [],
 			component = NumberRender,
-			regExpValid = isValidNumber,
-			invalidNumberError,
 			...props
 		} = this.props;
-
-		const validNumber = validator(invalidNumberError, regExpValid);
-		const validators = [
-			...getRequiredValidator({required, requiredDisable}),
-			validNumber,
-			...validate
-		];
 
 		return (
 			<Field
 				type="tel"
-				validate={validators}
+				validate={this.validators}
 				component={component}
 				normalize={numberHelper.parseNumber}
 				{...props}
