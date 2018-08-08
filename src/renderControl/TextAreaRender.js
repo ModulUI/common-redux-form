@@ -1,8 +1,8 @@
 import React from 'react'
-import {radValidateHoc, InputFocusable} from './../validationHelpers'
+import {validation, InputFocusable} from './../validationHelpers'
 
 
-@radValidateHoc({tips: true})
+@validation({tips: true})
 class TextAreaRender extends React.Component {
 	constructor(props) {
 		super(props);

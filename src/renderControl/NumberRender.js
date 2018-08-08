@@ -1,10 +1,10 @@
 /* eslint-disable */
 import React from 'react';
 import {NumberInput} from 'modul-components';
-import {radValidateHoc, CustomFocusable} from './../validationHelpers';
+import {validation, CustomFocusable} from './../validationHelpers';
 
 
-@radValidateHoc({tips: true})
+@validation({tips: true})
 class NumberRender extends React.Component {
 
 	static defaultProps = {
