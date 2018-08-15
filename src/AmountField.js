@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field } from 'redux-form/immutable';
+import { Field } from 'redux-form';
 import AmountRender from './renderControl/AmountRender';
 import { numberHelper } from 'modul-helpers';
 import { getRequiredValidator } from './validationHelpers/formFieldHelpers'

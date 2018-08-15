@@ -1,5 +1,5 @@
 import React from 'react';
-import {Field} from 'redux-form/immutable';
+import {Field} from 'redux-form';
 import NumberRender from './renderControl/NumberRender';
 import {numberHelper} from 'modul-helpers';
 import {getRequiredValidator} from './validationHelpers/formFieldHelpers';

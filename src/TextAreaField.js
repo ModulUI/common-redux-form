@@ -1,5 +1,5 @@
 import React from 'react';
-import {Field} from 'redux-form/immutable';
+import {Field} from 'redux-form';
 import TextAreaRender from './renderControl/TextAreaRender';
 import inputFieldShape from './inputFieldShape';
 import {getRequiredValidator} from './validationHelpers/formFieldHelpers'

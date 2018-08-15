@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field } from 'redux-form/immutable';
+import { Field } from 'redux-form';
 import { getRequiredValidator } from './validationHelpers/formFieldHelpers'
 import DatePickerRender from './renderControl/DatePickerRender';
 import { dateHelper } from 'modul-helpers';

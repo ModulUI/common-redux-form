@@ -1,5 +1,5 @@
 import React from 'react'
-import {Field} from 'redux-form/immutable'
+import {Field} from 'redux-form'
 import PropTypes from 'prop-types'
 
 class SwitchField extends React.Component {
