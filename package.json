@@ -1,6 +1,6 @@
 {
   "name": "common-redux-form",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "",
   "main": "./lib",
   "scripts": {
@@ -23,7 +23,7 @@
     "react-dom": "^0.14.9 || ^15.3.0 || ^16.0.0-rc || ^16.0",
     "redux-form": "^6.0 || ^7.0",
     "classnames": "^2.2.6",
-    "modul-components": "0.0.50",
+    "modul-components": "^0.0.50",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
     "prop-types": "^15.5.8"
