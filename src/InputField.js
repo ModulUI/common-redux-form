@@ -28,7 +28,8 @@ InputField.propTypes = {
 	requiredDisable: PropTypes.bool, //выключении валидации на обязательность значения
 	validate: PropTypes.oneOfType([PropTypes.func, PropTypes.arrayOf(PropTypes.func)]),
 	wrapperClassName: PropTypes.string, //стили для дива в который будет завернуть компонент при натягивании валидации
-	tipPlace: PropTypes.string //где будет выводится тултип
+	tipPlace: PropTypes.string, //где будет выводится тултип
+	mask: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object, PropTypes.string])),
 };
 
 export {InputField};

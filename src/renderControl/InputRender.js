@@ -1,5 +1,6 @@
 import React from 'react'
-import {validation, InputFocusable} from '../validationHelpers'
+import {validation, InputFocusable} from '../validationHelpers';
+import MaskedInput from 'react-text-mask';
 
 
 @validation({tips: true})
@@ -19,21 +20,37 @@ class InputRender extends React.Component {
     };
 
     render() {
-        const {input, label, className, type, validator, disabled, readOnly, maxLength, autoComplete} = this.props;
+        const {input, label, className, type, validator, disabled, readOnly, maxLength, autoComplete, mask} = this.props;
         const {tooltip, addClassName} = validator;
-        const classNames = [className, addClassName].join(' ');
-        return (
-            <input {...input}
-                   ref={input => this.focusator.init(input)}
-                   autoComplete={autoComplete}
-                   className={classNames}
-                   placeholder={label}
-                   type={type}
-                   disabled={disabled}
-                   readOnly={readOnly}
-                   maxLength={maxLength === 0 ? 100000 : maxLength}
-                   {...tooltip} />
-        );
+		const classNames = [className, addClassName].join(' ');
+		if (mask) {
+			return (
+				<MaskedInput {...input}
+						ref={input => this.focusator.init(input)}
+						autoComplete={autoComplete}
+						className={classNames}
+						placeholder={label}
+						type={type}
+						disabled={disabled}
+						readOnly={readOnly}
+						maxLength={maxLength === 0 ? 100000 : maxLength}
+						mask={mask}
+						guide={false}
+						{...tooltip} />
+			);
+		}
+		return (
+			<input {...input}
+					ref={input => this.focusator.init(input)}
+					autoComplete={autoComplete}
+					className={classNames}
+					placeholder={label}
+					type={type}
+					disabled={disabled}
+					readOnly={readOnly}
+					maxLength={maxLength === 0 ? 100000 : maxLength}
+					{...tooltip} />
+		);
     }
 }
 
