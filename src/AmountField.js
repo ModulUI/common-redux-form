@@ -7,34 +7,61 @@ import { getRequiredValidator } from './validationHelpers/formFieldHelpers'
 import { validator, isValidNumber } from './validationHelpers/utils';
 
 const {parseNumber} = numberHelper;
-const AmountField = ({ required, requiredDisable, validate = [], invalidAmountError, ...props }) => {
-    const validNumber = validator(invalidAmountError || 'Введите корректное значение', isValidNumber);
-    const validators = [...getRequiredValidator({required, requiredDisable}), validNumber, ...validate];
-    return (
-      <Field
-        type="text"
-        parse={parseNumber}
-        component={AmountRender}
-        validate={validators}
-        {...props}
-      />
-    );
-};
+class AmountField extends React.Component {
+	static defaultProps = {
+		validate: [],
+	};
+	static propTypes = {
+		name: PropTypes.string.isRequired,
+		format: PropTypes.func,
+		normalize: PropTypes.func,
+		onBlur: PropTypes.func,
+		onChange: PropTypes.func,
+		onFocus: PropTypes.func,
+		onDragStart: PropTypes.func,
+		onDrop: PropTypes.func,
+		parse: PropTypes.func,
+		required: PropTypes.string, //текст ошибки при отсутствии значения
+		requiredDisable: PropTypes.bool, //выключении валидации на обязательность значения
+		validate: PropTypes.oneOfType([PropTypes.func, PropTypes.arrayOf(PropTypes.func)]),
+		wrapperClassName: PropTypes.string //стили для дива в который будет завернуть компонент при натягивании валидации
+	};
+	constructor(props) {
+		super(props);
+		this.validators = [];
+		this._createValidators(props);
+	}
+	componentWillReceiveProps(nextProps) {
+		this._createValidators(nextProps);
+	}
 
-AmountField.propTypes = {
-	name: PropTypes.string.isRequired,
-	format: PropTypes.func,
-	normalize: PropTypes.func,
-	onBlur: PropTypes.func,
-	onChange: PropTypes.func,
-	onFocus: PropTypes.func,
-	onDragStart: PropTypes.func,
-	onDrop: PropTypes.func,
-	parse: PropTypes.func,
-	required: PropTypes.string, //текст ошибки при отсутствии значения
-	requiredDisable: PropTypes.bool, //выключении валидации на обязательность значения
-	validate: PropTypes.oneOfType([PropTypes.func, PropTypes.arrayOf(PropTypes.func)]),
-	wrapperClassName: PropTypes.string //стили для дива в который будет завернуть компонент при натягивании валидации
-};
+	_createValidators(props) {
+		const {required, requiredDisable, validate} = props;
+		this.validators.length = 0;
+		const requiredFieldValidator = getRequiredValidator({required, requiredDisable});
+
+		this.validators.push(...requiredFieldValidator);
+
+		if (validate) {
+			if (Array.isArray(validate))
+				this.validators.push(...validate);
+			else
+				this.validators.push(validate);
+		}
+	}
+	render() {
+		const { required, requiredDisable, validate = [], invalidAmountError, ...props } = this.props;
+
+		return (
+			<Field
+			  type="text"
+			  parse={parseNumber}
+			  component={AmountRender}
+			  validate={this.validators}
+			  {...props}
+			/>
+		)
+	}
+}
 
 export { AmountField };
