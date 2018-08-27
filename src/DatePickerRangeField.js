@@ -15,38 +15,60 @@ const parseDate = date => {
   }
 	return date;
 };
+class DatePickerRangeField extends React.Component {
+	static propTypes = {
+		required: PropTypes.string,
+		validate: PropTypes.array,
+		requiredDisable: PropTypes.bool,
+		wrapperClassName: PropTypes.string,
+		tipPlace: PropTypes.string,
+		validators: PropTypes.array,
+		periods: PropTypes.array,
+		dateFrom: PropTypes.object,
+		dateTo: PropTypes.object,
+	};
+	
+	static defaultProps = {
+		periods: [],
+	};
+	constructor(props) {
+		super(props);
+		this.validators = [];
+		this._createValidators(props);
+	}
+	componentWillReceiveProps(nextProps) {
+		this._createValidators(nextProps);
+	}
 
-const DatePickerRangeField = ({required, requiredDisable, validate = [], periods = [], dateFrom, dateTo, ...props}) => {
-	const validators = [...getRequiredValidator({required, requiredDisable}), ...validate];
-	return (
-		<Field
-			type="text"
-			validate={validators}
-			component={DatePickerRangeRender}
-			parse={parseDate}
-			periods={periods}
-			dateFrom={dateFrom}
-			dateTo={dateTo}
-			{...props}
-		/>
-	);
-};
+	_createValidators(props) {
+		const {required, requiredDisable, validate} = props;
+		this.validators.length = 0;
+		const requiredFieldValidator = getRequiredValidator({required, requiredDisable});
 
-DatePickerRangeField.propTypes = {
-	required: PropTypes.string,
-	validate: PropTypes.array,
-	requiredDisable: PropTypes.bool,
-	wrapperClassName: PropTypes.string,
-	tipPlace: PropTypes.string,
-	validators: PropTypes.array,
-	periods: PropTypes.array,
-	dateFrom: PropTypes.object,
-	dateTo: PropTypes.object,
-};
+		this.validators.push(...requiredFieldValidator);
 
-DatePickerRangeField.defaultProps = {
-	periods: [],
-};
-
+		if (validate) {
+			if (Array.isArray(validate))
+				this.validators.push(...validate);
+			else
+				this.validators.push(validate);
+		}
+	}
+	render() {
+		const { required, requiredDisable, validate = [], periods = [], dateFrom, dateTo, ...props } = this.props;
+		return (
+			<Field
+				type="text"
+				validate={this.validators}
+				component={DatePickerRangeRender}
+				parse={parseDate}
+				periods={periods}
+				dateFrom={dateFrom}
+				dateTo={dateTo}
+				{...props}
+			/>
+		);
+	} 
+}
 
 export { DatePickerRangeField };
