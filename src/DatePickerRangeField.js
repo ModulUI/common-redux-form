@@ -16,7 +16,7 @@ const parseDate = date => {
 	return date;
 };
 
-const DatePickerRangeField = ({required, requiredDisable, validate = [], periods = [], ...props}) => {
+const DatePickerRangeField = ({required, requiredDisable, validate = [], periods = [], dateFrom, dateTo, ...props}) => {
 	const validators = [...getRequiredValidator({required, requiredDisable}), ...validate];
 	return (
 		<Field
@@ -25,6 +25,8 @@ const DatePickerRangeField = ({required, requiredDisable, validate = [], periods
 			component={DatePickerRangeRender}
 			parse={parseDate}
 			periods={periods}
+			dateFrom={dateFrom}
+			dateTo={dateTo}
 			{...props}
 		/>
 	);
@@ -38,6 +40,8 @@ DatePickerRangeField.propTypes = {
 	tipPlace: PropTypes.string,
 	validators: PropTypes.array,
 	periods: PropTypes.array,
+	dateFrom: PropTypes.object,
+	dateTo: PropTypes.object,
 };
 
 DatePickerRangeField.defaultProps = {

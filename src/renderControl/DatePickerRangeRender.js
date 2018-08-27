@@ -19,6 +19,8 @@ class DatePickerRangeRender extends React.Component {
 		datepicker: PropTypes.any,
 		formatPicker: PropTypes.any,
 		periods: PropTypes.array,
+		dateFrom: PropTypes.object,
+		dateTo: PropTypes.object,
 	};
 
 	constructor(props) {
@@ -37,6 +39,8 @@ class DatePickerRangeRender extends React.Component {
 			datepicker,
 			formatPicker,
 			periods,
+			dateFrom,
+			dateTo,
 		} = this.props;
 		const {
 			tooltip,
@@ -63,6 +67,8 @@ class DatePickerRangeRender extends React.Component {
 				format={formatPicker}
 				yearStart={1900}
 				periods={periods}
+				dateFrom={dateFrom}
+				dateTo={dateTo}
 			/>
 		);
 	}
