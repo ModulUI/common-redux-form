@@ -1,84 +1,56 @@
-// import React from 'react';
-// import PropTypes from 'prop-types';
-// import { DropZone } from 'modul-components';
-//
-//
-// class UploadField extends React.Component {
-// 	static propTypes = {
-// 		name: PropTypes.string,
-// 		loading: PropTypes.bool,
-// 		error: PropTypes.bool,
-// 		isLoad: PropTypes.bool,
-// 		fileLink: PropTypes.string,
-// 		fileName: PropTypes.string,
-// 		fileDescription: PropTypes.string,
-// 		children: PropTypes.element,
-// 		onLoading: PropTypes.func
-// 	};
-//
-// 	onOpenFile = () => {
-// 		this.fileZone.open();
-// 	};
-//
-// 	onDragStart = files => {
-// 		this.props.onLoading(files[0]);
-// 	};
-//
-// 	render() {
-// 		const {
-// 			name,
-// 			loading,
-// 			error,
-// 			isLoad,
-// 			fileLink,
-// 			fileName,
-// 			fileDescription,
-// 			children
-// 		} = this.props;
-//
-// 		const cssClass = (loading && 'loading_block' || '') + (error && 'error' || '');
-//
-// 		return (
-// 			<DropZone
-//         getRef={(r) => {
-//           this.fileZone = r;
-//         }}
-// 				disableClick
-// 				name={name}
-// 				onDrop={this.onDragStart}
-// 				className={`col five`}
-// 				accept="image/jpeg, image/png, application/pdf"
-//       >
-// 				{() => {
-// 					if (isLoad) {
-// 						return (
-// 							<div className={`file_upload_block col full ${cssClass}`}>
-// 								<div className='uploaded'>
-// 									<div className='file_center'>
-// 										<div className='file_icon jpg' />
-// 										<div className="file_name">
-// 											<a href={fileLink} target='_blank'>{fileName}</a>
-// 										</div>
-// 										<div className='file_title'>{fileDescription}</div>
-// 									</div>
-// 								</div>
-// 							</div>
-// 						);
-// 					}
-// 					return (
-// 						<div className={`file_upload_block col full ${cssClass}`}>
-// 							{children}
-// 							<div className='file_button' onClick={this.onOpenFile}>
-// 								<label className='button light icon-upload small button_file_upload'>
-// 									Загрузить
-// 								</label>
-// 							</div>
-// 						</div>
-// 					);
-// 				}}
-// 			</DropZone>
-// 		);
-// 	}
-// }
-//
-// export { UploadField };
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Field } from 'redux-form';
+import { getRequiredValidator } from './validationHelpers/formFieldHelpers';
+import UploadRender from './renderControl/UploadRender';
+
+
+class UploadField extends React.Component {
+	static propTypes = {
+		required: PropTypes.bool,
+		requiredDisable: PropTypes.bool,
+		validate: PropTypes.oneOfType([PropTypes.func, PropTypes.arrayOf(PropTypes.func)]),
+	};
+	static defaultProps = {
+		validate: [],
+	};
+
+	constructor(props) {
+		super(props);
+		this.validators = [];
+		this._createValidators(props);
+	}
+	componentWillReceiveProps(nextProps) {
+		this._createValidators(nextProps);
+	}
+
+	_createValidators(props) {
+		const {required, requiredDisable, validate} = props;
+		this.validators.length = 0;
+		const requiredFieldValidator = getRequiredValidator({required, requiredDisable});
+
+		this.validators.push(...requiredFieldValidator);
+		if (validate) {
+			if (Array.isArray(validate)) {
+				this.validators.push(...validate);
+			}
+            else {
+				this.validators.push(validate);
+			}
+        }
+	}
+
+	render() {
+		const { required, requiredDisable, validate = [], ...props } = this.props;
+
+		return (
+			<Field
+			  	component={UploadRender}
+			  	validate={this.validators}
+			  	{...props}
+			/>
+		);
+	}
+}
+
+export { UploadField };
