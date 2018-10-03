@@ -1,6 +1,6 @@
 {
   "name": "common-redux-form",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "package with fields for redux-form",
   "main": "./lib",
   "scripts": {
