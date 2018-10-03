@@ -107,7 +107,7 @@ export function validation({tips, dataOnWrapper} = {tips: true, dataOnWrapper: f
                 const isError = showErrorBorder({valid, error, active, visited, submitFailed});
                 const isSuccess = showSuccessBorder({valid, visited, error, active});
 
-                const additionalClassName = classNames({error: isError}, {success: isError});
+                const additionalClassName = classNames({error: isError}, {success: isSuccess});
 
                 const validator = {
                     error: error,
