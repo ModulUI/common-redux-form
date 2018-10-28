@@ -1,6 +1,6 @@
 import React from 'react'
 import {validation, InputFocusable} from '../validationHelpers';
-import MaskedInput from 'react-text-mask';
+import { MaskedInputControl as MaskedInput } from 'modul-components';
 
 
 @validation({tips: true})
