@@ -1,6 +1,6 @@
 import React from 'react'
 import {validation, InputFocusable} from '../validationHelpers';
-import { MaskedInputControl as MaskedInput } from 'modul-components';
+import { MaskedInputControl } from 'modul-components';
 
 
 @validation({tips: true})
@@ -25,7 +25,7 @@ class InputRender extends React.Component {
 		const classNames = [className, addClassName].join(' ');
 		if (mask) {
 			return (
-				<MaskedInput {...input}
+				<MaskedInputControl {...input}
 						ref={input => this.focusator.init(input)}
 						autoComplete={autoComplete}
 						className={classNames}
