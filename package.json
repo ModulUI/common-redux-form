@@ -17,8 +17,8 @@
     "url": "https://github.com/ModulUI/common-redux-form/issues"
   },
   "peerDependencies": {
-    "react": "^0.14.9 || ^15.3.0 || ^16.0.0-rc || ^16.0",
-    "react-dom": "^0.14.9 || ^15.3.0 || ^16.0.0-rc || ^16.0",
+    "react": "^16.0.0-rc || ^16.0",
+    "react-dom": "^16.0.0-rc || ^16.0",
     "redux-form": "^6.0 || ^7.0",
     "modul-components": ">=0.0.62",
     "react-redux": "^5.0.7",
@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "react-text-mask": "^5.4.3",
-    "modul-components": "^0.0.62",
+    "modul-ui": "^0.0.11",
     "classnames": "^2.2.6"
   },
   "devDependencies": {

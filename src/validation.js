@@ -1,6 +1,6 @@
 import {showErrorBorder, showSuccessBorder, getErrorMessage, ifCondition, getRandomKey} from './validationHelpers/formFieldHelpers'
-import React from 'react'
-import {ModulTooltip} from 'modul-components';
+import React from '../../ModulBank.FrontEnd/node_modules/react'
+import {ModulTooltip} from 'modul-ui';
 import classNames from "classnames";
 
 /**
@@ -12,9 +12,8 @@ import classNames from "classnames";
  * tooltip: tooltip - конфиг для тултипа, который внедреятся в <input/>
  *
  * tips - включены ли подскажи тултипа
- * dataOnWrapper - данные для фокусировки и отображению тултипа внедряются в оборачивающий элемент
  */
-export function validation({tips, dataOnWrapper} = {tips: true, dataOnWrapper: false}) {
+export function validation({tips} = {tips: true}) {
     return (WrappedComponent) => {
         class radValidateTooltip extends React.Component {
 
@@ -122,13 +121,13 @@ export function validation({tips, dataOnWrapper} = {tips: true, dataOnWrapper: f
                     let tooltipProps = this.getTooltipProps(tipPlace);
 
                     return (
-                        <div className={wrapperClassName}>
+                        <React.Fragment>
                             <WrappedComponent ref={wrappedEl => this.wrappedEl = wrappedEl}
                                               {...wrappedProps} validator={validator}/>
 
                             {showErrorMessage && <ModulTooltip dataFor={this.tooltipId}
                                                                {...tooltipProps} />}
-                        </div>
+                        </React.Fragment>
                     )
                 }
 

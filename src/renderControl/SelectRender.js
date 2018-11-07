@@ -1,14 +1,18 @@
-import React from 'react'
-import {Select} from 'modul-components';
+// import React from 'react'
+// import {Select} from 'modul-ui'; TODO
+
 import {validation, CustomFocusable} from '../validationHelpers'
+
+import React from 'react'
+import Select from '../../../modul-ui/source/Select/Select.jsx';
 
 @validation({tips: true, dataOnWrapper: true})
 class SelectRender extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.focusator = new CustomFocusable();
-    }
+	constructor(props) {
+		super(props);
+		this.focusator = new CustomFocusable();
+	}
 
     componentDidMount() {
         // TODO: исправить, костыль
@@ -87,6 +91,7 @@ class SelectRender extends React.Component {
 SelectRender.propTypes = Select.propTypes;
 
 export default SelectRender;
+
 
 
 

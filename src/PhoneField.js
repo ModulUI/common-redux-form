@@ -46,11 +46,14 @@ export class PhoneField extends React.Component {
         }
     }
 
-    render() {
-        const {required, requiredDisable, validate, invalidPhoneError, ...props} = this.props;
+	render() {
+		const {...props} = this.props;
 
-        return (<Field type="tel" component={PhoneRender}
-                       validate={this.phoneValidators}
-                       parse={phoneParser} {...props}/>);
-    }
+		return (<Field
+			{...props}
+			type="tel" component={PhoneRender}
+			validate={this.phoneValidators}
+			parse={phoneParser}
+		/>);
+	}
 }

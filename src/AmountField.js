@@ -50,15 +50,15 @@ class AmountField extends React.Component {
 		}
 	}
 	render() {
-		const { required, requiredDisable, validate = [], invalidAmountError, ...props } = this.props;
+		const { ...props } = this.props;
 
 		return (
 			<Field
-			  type="text"
-			  parse={parseNumber}
-			  component={AmountRender}
-			  validate={this.validators}
-			  {...props}
+				{...props}
+				type="text"
+				parse={parseNumber}
+				component={AmountRender}
+				validate={this.validators}
 			/>
 		)
 	}

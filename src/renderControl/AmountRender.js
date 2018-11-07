@@ -1,5 +1,5 @@
 import React from 'react'
-import { AmountInput } from 'modul-components';
+import AmountInput from '../../../modul-ui/source/AmountInput/AmountInput.jsx'; // TODO modul-ui
 import { validation, CustomFocusable } from '../validationHelpers'
 
 @validation({tips: true})

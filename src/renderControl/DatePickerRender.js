@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { DatePicker } from 'modul-components';
+import { DatePicker } from 'modul-ui';
 import { validation, CustomFocusable } from '../validationHelpers';
 
 

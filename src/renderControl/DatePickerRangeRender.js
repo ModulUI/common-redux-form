@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { DatePickerRange } from 'modul-components';
+// import { DatePickerRange } from 'modul-ui'; // TODO нету
+import DatePickerRange from '../../../modul-ui/source/DatePickerRange/DatePickerRange.jsx'; // TODO нету
 import { validation, CustomFocusable } from '../validationHelpers';
 
 

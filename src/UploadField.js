@@ -7,7 +7,7 @@ import UploadRender from './renderControl/UploadRender';
 
 class UploadField extends React.Component {
 	static propTypes = {
-		required: PropTypes.bool,
+		required: PropTypes.string, //текст ошибки при отсутствии значения
 		requiredDisable: PropTypes.bool,
 		validate: PropTypes.oneOfType([PropTypes.func, PropTypes.arrayOf(PropTypes.func)]),
 	};
@@ -41,13 +41,14 @@ class UploadField extends React.Component {
 	}
 
 	render() {
-		const { required, requiredDisable, validate = [], ...props } = this.props;
+		const { ...props } = this.props;
 
 		return (
 			<Field
+				{...props}
 			  	component={UploadRender}
 			  	validate={this.validators}
-			  	{...props}
+
 			/>
 		);
 	}

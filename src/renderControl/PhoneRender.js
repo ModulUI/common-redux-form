@@ -1,5 +1,6 @@
 import React from 'react'
-import {PhoneInput} from 'modul-components';
+// import {PhoneInput} from 'modul-ui'; // TODO нету
+import PhoneInput from '../../../modul-ui/source/PhoneInput/PhoneInput.jsx'; // TODO
 import {validation, CustomFocusable} from '../validationHelpers'
 import classNames from "classnames";
 
