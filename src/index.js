@@ -6,6 +6,6 @@ export {AmountField} from './AmountField';
 export {DatePickerField} from './DatePickerField';
 export {DatePickerRangeField} from './DatePickerRangeField';
 export {UploadField} from './UploadField';
-// export NumberField from './NumberField';
+export NumberField from './NumberField';
 export TextAreaField from './TextAreaField';
 export SwitchField from './SwitchField';
