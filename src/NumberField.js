@@ -7,7 +7,7 @@ import {validator, isValidNumber} from './validationHelpers/utils';
 import PropTypes from 'prop-types';
 
 
-class NumberField extends React.Component {
+export class NumberField extends React.Component {
 	static defaultProps = {
 		validate: [],
 		component: NumberRender,
@@ -83,5 +83,3 @@ class NumberField extends React.Component {
 
 
 }
-
-export default NumberField;

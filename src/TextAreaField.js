@@ -4,7 +4,7 @@ import TextAreaRender from './renderControl/TextAreaRender';
 import inputFieldShape from './inputFieldShape';
 import {getRequiredValidator} from './validationHelpers/formFieldHelpers'
 
-class TextAreaField extends React.Component {
+export class TextAreaField extends React.Component {
 
 	static defaultProps = {
 		validate: [],
@@ -47,5 +47,3 @@ class TextAreaField extends React.Component {
 		/>);
 	}
 }
-
-export default TextAreaField;
