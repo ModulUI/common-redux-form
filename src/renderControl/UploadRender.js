@@ -1,6 +1,5 @@
 import React from 'react';
-// import { DropZone } from 'modul-ui'; // TODO нету
-import DropZone from '../../../modul-ui/source/DropZone/DropZone.jsx'; // TODO нету
+import { DropZone } from 'modul-ui';
 import { validation, InputFocusable } from '../validationHelpers';
 
 

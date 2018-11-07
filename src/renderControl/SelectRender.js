@@ -1,10 +1,9 @@
 // import React from 'react'
-// import {Select} from 'modul-ui'; TODO
+import {Select} from 'modul-ui';
 
 import {validation, CustomFocusable} from '../validationHelpers'
 
 import React from 'react'
-import Select from '../../../modul-ui/source/Select/Select.jsx';
 
 @validation({tips: true, dataOnWrapper: true})
 class SelectRender extends React.Component {
