@@ -54,7 +54,7 @@ class InputField extends React.Component {
 	}
 
 	render() {
-		const {type = 'text', component = InputRender, warn = [], ...props} = this.props;
+		const {type = 'text', required, requiredDisable, component = InputRender, warn = [], ...props} = this.props;
 
 		return (<Field {...props}
 					   type={type}
