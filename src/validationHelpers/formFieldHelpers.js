@@ -12,8 +12,8 @@ export const ifCondition = (condition, value, defaultVal = '') => {
  * @param submitFailed - не удачная отправка формы
  * @returns {*}
  */
-export const showErrorBorder = ({valid, error, visited, submitFailed}) => {
-	return (!valid || error) && (visited || submitFailed);
+export const showErrorBorder = ({valid, error, touched, submitFailed}) => {
+	return (!valid || error) && (touched || submitFailed);
 };
 
 /**
