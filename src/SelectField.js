@@ -121,7 +121,7 @@ export class SelectField extends React.Component {
 	}
 
 	render() {
-		const {onChange, onBlur, ...props} = this.props;
+		const {onChange, onBlur, required, ...props} = this.props;
 
 		return ( <Field {...props}
 						component={SelectRender}
