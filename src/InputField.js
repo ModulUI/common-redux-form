@@ -8,7 +8,6 @@ import {getRequiredValidator} from './validationHelpers/formFieldHelpers'
 class InputField extends React.Component {
 	static defaultProps = {
 		validate: [],
-		placeholder: '',
 	};
 
 	static propTypes = {
