@@ -72,3 +72,15 @@ export const normilizeDelFirstEndSpace = val => val.replace(/(^\s*)|(\s*)$/g, ''
 
 // латинские буквы, числа + не чувствителен к регистру
 export const validatorLatinNumber = value => /^[а-яa-z0-9._-]+$/gi.test(value);
+
+// только латинские буквы, числа + не чувствителен к регистру
+export const validatorOnlyLatinNumber = value => /^[a-z0-9]+$/gi.test(value);
+
+// normalize, не даёт ввести ни чего, кроме правил validatorOnlyLatinNumber
+export const normalizeOnlyLatinNumber = (value, previousValue) => validatorOnlyLatinNumber(value) ? value : previousValue;
+
+// только латинские буквы, числа, спецсимволы + не чувствителен к регистру
+export const validatorOnlyLatinNumberSymb = value => /^[a-z0-9._-]+$/gi.test(value);
+
+// normalize, не даёт ввести кириллицу
+export const normalizeOnlyLatinNumberSymb = (value, previousValue) => validatorOnlyLatinNumberSymb(value) ? value : previousValue;

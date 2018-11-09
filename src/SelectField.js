@@ -3,6 +3,7 @@ import {Field} from 'redux-form';
 import SelectRender from './renderControl/SelectRender';
 import PropTypes from 'prop-types';
 import {getRequiredValidator} from './validationHelpers/formFieldHelpers'
+import inputFieldShape from "./inputFieldShape";
 
 const stringOrNode = PropTypes.oneOfType([
 	PropTypes.string,
@@ -87,16 +88,47 @@ export class SelectField extends React.Component {
 		requiredDisable: PropTypes.bool
 	};
 
-	render() {
-		const {onChange, onBlur, required, requiredDisable, validate = [], placeholder = '', ...props} = this.props;
-		const validators = [...getRequiredValidator({required, requiredDisable}), ...validate];
+	static defaultProps = {
+		validate: [],
+		placeholder: '',
+	};
 
-		return ( <Field component={SelectRender}
+	static propTypes = inputFieldShape;
+
+	constructor(props) {
+		super(props);
+		this.validators = [];
+		this._createValidators(props);
+	}
+
+	componentWillReceiveProps(nextProps) {
+		this._createValidators(nextProps);
+	}
+
+	_createValidators(props) {
+		const {required, requiredDisable, validate} = props;
+		this.validators.length = 0;
+		const requiredFieldValidator = getRequiredValidator({required, requiredDisable});
+
+		this.validators.push(...requiredFieldValidator);
+
+		if (validate) {
+			if (Array.isArray(validate))
+				this.validators.push(...validate);
+			else
+				this.validators.push(validate);
+		}
+	}
+
+	render() {
+		const {onChange, onBlur, ...props} = this.props;
+
+		return ( <Field {...props}
+						component={SelectRender}
 						onSelectChange={onChange}
 						onSelectBlur={onBlur}
-						placeholder={placeholder}
-						validate={validators}
-						{...props} />);
+						validate={this.validators}
+		/>);
 	}
 }
 

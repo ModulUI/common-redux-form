@@ -40,10 +40,11 @@ class TextAreaField extends React.Component {
 	render(){
 		const {type = 'text', component = TextAreaRender, ...props} = this.props;
 
-		return (<Field type={type}
+		return (<Field {...props}
+					   type={type}
 					   validate={this.validators}
 					   component={component}
-			{...props}/>);
+			/>);
 	}
 }
 

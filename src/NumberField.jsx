@@ -72,11 +72,11 @@ class NumberField extends React.Component {
 
 		return (
 			<Field
+                {...props}
 				type="tel"
 				validate={this.validators}
 				component={component}
 				normalize={numberHelper.parseNumber}
-				{...props}
 			/>
 		);
 	}
