@@ -20,11 +20,11 @@ const DatePickerField = ({required, requiredDisable, validate = [], ...props}) =
 	const validators = [...getRequiredValidator({required, requiredDisable}), ...validate];
 	return (
 		<Field
+			{...props}
 			type="text"
 			validate={validators}
 			component={DatePickerRender}
 			parse={parseDate}
-			{...props}
 		/>
 	);
 };
