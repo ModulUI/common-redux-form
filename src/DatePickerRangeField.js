@@ -55,9 +55,10 @@ class DatePickerRangeField extends React.Component {
 		}
 	}
 	render() {
-		const { required, requiredDisable, validate = [], periods = [], dateFrom, dateTo, ...props } = this.props;
+		const { periods = [], dateFrom, dateTo, ...props } = this.props;
 		return (
 			<Field
+				{...props}
 				type="text"
 				validate={this.validators}
 				component={DatePickerRangeRender}
@@ -65,10 +66,9 @@ class DatePickerRangeField extends React.Component {
 				periods={periods}
 				dateFrom={dateFrom}
 				dateTo={dateTo}
-				{...props}
 			/>
 		);
-	} 
+	}
 }
 
 export { DatePickerRangeField };

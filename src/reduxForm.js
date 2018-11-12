@@ -45,8 +45,8 @@ export const reduxForm = ({form, onSubmitFail: initialSubmitFailed, ...initialPr
         handleSubmitFailed(errors, dispatch, submitError, ...other) {
             const {onSubmitFail: propsSubmitFailed} = this.props;
             focusOnFailed(errors, form || this.props.form, dispatch);
-            propsSubmitFailed && propsSubmitFailed(errors, dispatch, ...other);
-            initialSubmitFailed && initialSubmitFailed(errors, dispatch, ...other);
+            propsSubmitFailed && propsSubmitFailed(errors, dispatch, false);
+            initialSubmitFailed && initialSubmitFailed(errors, dispatch, false);
             if (!propsSubmitFailed && !initialSubmitFailed)
                 console.warn(submitError)
         }

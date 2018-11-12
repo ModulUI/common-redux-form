@@ -3,6 +3,7 @@
   "version": "0.0.22",
   "description": "package with fields for redux-form",
   "main": "./lib",
+  "module": "./src",
   "scripts": {
     "build": "babel ./src --out-dir ./lib",
     "pub": "git commit -am 'fix' && git push && npm run build && npm publish"

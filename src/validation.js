@@ -22,7 +22,6 @@ export function validation({tips, dataOnWrapper} = {tips: true, dataOnWrapper: f
                 super(props, context);
                 this.validatorId = getRandomKey();
 				this.tooltipId = `tooltip_${this.validatorId}`;
-				this.prevVisited = false;
             }
 
             componentDidUpdate(prevProps) {
@@ -56,8 +55,8 @@ export function validation({tips, dataOnWrapper} = {tips: true, dataOnWrapper: f
             }
 
             showTooltipError() {
-                const {meta: {touched, error, submitFailed}} = this.props;
-                return error && (submitFailed || touched);
+                const {meta: {active, touched, error, submitFailed}} = this.props;
+                return error && ((submitFailed || touched) && active);
             }
 
             getTooltipProps(tipPlace) {
@@ -105,12 +104,11 @@ export function validation({tips, dataOnWrapper} = {tips: true, dataOnWrapper: f
 
                 const tooltip = this.getTooltipConfig({id: this.tooltipId});
 
-                const isError = showErrorBorder({valid, error, active, visited, prevVisited: this.prevVisited, submitFailed});
+                const isError = showErrorBorder({valid, error, touched, submitFailed});
                 const isSuccess = showSuccessBorder({valid, visited, error, active});
 
 				const additionalClassName = classNames({error: isError}, {success: isSuccess});
 
-				this.prevVisited = visited;
 
                 const validator = {
                     error: error,
