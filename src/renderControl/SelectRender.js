@@ -78,9 +78,11 @@ class SelectRender extends React.Component {
         const {input: fieldInput, onSelectChange, valueKey = 'value'} = this.props;
 
         let {onChange: onInputChange} = fieldInput;
-        onInputChange(obj ? obj[valueKey] : null);
-        if (onSelectChange)
-            onSelectChange(obj);
+		if (onSelectChange) {
+			onSelectChange(obj);
+		} else {
+			onInputChange(obj ? obj[valueKey] : null);
+		}
     }
 }
 

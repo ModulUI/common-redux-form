@@ -91,6 +91,7 @@ export class SelectField extends React.Component {
 	static defaultProps = {
 		validate: [],
 		placeholder: '',
+		clearValueText: 'Очистить',
 	};
 
 	static propTypes = inputFieldShape;
