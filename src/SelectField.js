@@ -85,13 +85,15 @@ export class SelectField extends React.Component {
 		creatable: PropTypes.bool, 			  // если можно вводить свой вариант (текст)
 		wrapperClassName: PropTypes.string,    // стили для дива в который будет завернуть компонент при натягивании валидации
 		required: PropTypes.string,
-		requiredDisable: PropTypes.bool
+		requiredDisable: PropTypes.bool,
+		noChange: PropTypes.bool,				// не вызывать onChange Fielda
 	};
 
 	static defaultProps = {
 		validate: [],
 		placeholder: '',
 		clearValueText: 'Очистить',
+		noChange: false,
 	};
 
 	static propTypes = inputFieldShape;
