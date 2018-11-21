@@ -25,7 +25,7 @@ export const validPasswordLength = password => {
 };
 
 export const isEmpty = val => {
-    return val === '' || val === null || val === undefined;
+    return (typeof val === 'string' && val.replace(/\s/g, '') === '') || val === null || val === undefined;
 };
 
 export const isRequired = text => val => isEmpty(val) ? text : undefined;
@@ -80,7 +80,16 @@ export const validatorOnlyLatinNumber = value => /^[a-z0-9]+$/gi.test(value);
 export const normalizeOnlyLatinNumber = (value, previousValue) => validatorOnlyLatinNumber(value) ? value : previousValue;
 
 // только латинские буквы, числа, спецсимволы + не чувствителен к регистру
-export const validatorOnlyLatinNumberSymb = value => /^[a-z0-9._-]+$/gi.test(value);
+export const validatorOnlyLatinNumberSymb = value => /^([\-?:\""`'().,‘+a-z0-9 '])*$/gi.test(value);
 
 // normalize, не даёт ввести кириллицу
 export const normalizeOnlyLatinNumberSymb = (value, previousValue) => validatorOnlyLatinNumberSymb(value) ? value : previousValue;
+
+// только латинские буквы, спецсимволы
+export const validatorOnlyLatinSymb = value => /^([\-?:\""`'().,‘+a-z '])*$/gi.test(value);
+
+// normalize, не даёт ввести кириллицу
+export const normalizeOnlyLatinSymb = (value, previousValue) => validatorOnlyLatinSymb(value) ? value : previousValue;
+
+// normalizer для чекбокса
+const normalizeCheckbox = (val) => val || false;
