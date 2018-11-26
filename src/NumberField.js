@@ -30,7 +30,6 @@ export class NumberField extends React.Component {
 		required: PropTypes.string, //текст ошибки при отсутствии значения
 		requiredDisable: PropTypes.bool, //выключении валидации на обязательность значения
 		validate: PropTypes.oneOfType([PropTypes.func, PropTypes.arrayOf(PropTypes.func)]),
-		wrapperClassName: PropTypes.string, //стили для дива в который будет завернуть компонент при натягивании валидации
 		float: PropTypes.bool //для значений с запятой
 	};
 

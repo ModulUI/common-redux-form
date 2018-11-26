@@ -1,5 +1,5 @@
-import {showErrorBorder, showSuccessBorder, getErrorMessage, ifCondition, getRandomKey} from './validationHelpers/formFieldHelpers'
-import React from '../../ModulBank.FrontEnd/node_modules/react'
+import {showErrorBorder, showSuccessBorder, getErrorMessage, ifCondition, getRandomKey} from './validationHelpers/formFieldHelpers';
+import React from 'react';
 import {ModulTooltip} from 'modul-ui';
 import classNames from "classnames";
 
@@ -96,7 +96,6 @@ export function validation({tips} = {tips: true}) {
                 const {
                     meta: {touched, error, warning, active, dirty, valid, visited, submitFailed},
                     hideTips,
-                    wrapperClassName = ''
                 } = this.props;
 
                 const {tipPlace, ...wrappedProps} = this.props;

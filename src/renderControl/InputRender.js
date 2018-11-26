@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {validation, InputFocusable} from '../validationHelpers';
 import MaskedInput from 'react-text-mask';
 
