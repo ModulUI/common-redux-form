@@ -1,12 +1,13 @@
 {
   "name": "common-redux-form",
-  "version": "0.0.17",
+  "version": "1.0.0",
   "description": "package with fields for redux-form",
-  "main": "./lib",
   "module": "./src",
   "scripts": {
     "build": "babel ./src --out-dir ./lib",
-    "pub": "git commit -am 'fix' && git push && npm run build && npm publish"
+    "pub": "git commit -am 'fix' && git push && npm run build && npm run copy && npm publish",
+    "copy": "cp package.json lib/",
+    "build-tc": "npm run build && npm run copy"
   },
   "repository": {
     "type": "git",
