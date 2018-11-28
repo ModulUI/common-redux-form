@@ -1,5 +1,5 @@
 import React from 'react'
-import {PhoneInput} from 'modul-components';
+import {PhoneInput} from 'modul-ui';
 import {validation, CustomFocusable} from '../validationHelpers'
 import classNames from "classnames";
 

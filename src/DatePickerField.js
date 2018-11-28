@@ -61,7 +61,6 @@ DatePickerField.propTypes = {
 	required: PropTypes.string,
 	validate: PropTypes.array,
 	requiredDisable: PropTypes.bool,
-	wrapperClassName: PropTypes.string,
 	tipPlace: PropTypes.string,
 	validators: PropTypes.array
 };

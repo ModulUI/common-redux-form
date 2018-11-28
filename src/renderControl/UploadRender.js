@@ -1,5 +1,5 @@
 import React from 'react';
-import { DropZone } from 'modul-components';
+import { DropZone } from 'modul-ui';
 import { validation, InputFocusable } from '../validationHelpers';
 
 

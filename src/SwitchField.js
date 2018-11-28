@@ -2,7 +2,7 @@ import React from 'react'
 import {Field} from 'redux-form'
 import PropTypes from 'prop-types'
 
-class SwitchField extends React.Component {
+export class SwitchField extends React.Component {
 
 	static propTypes = {
 		switchItems: PropTypes.arrayOf(PropTypes.shape({
@@ -31,5 +31,3 @@ class SwitchField extends React.Component {
 		</div>)
 	}
 }
-
-export default SwitchField;

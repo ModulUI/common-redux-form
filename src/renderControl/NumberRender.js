@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React from 'react';
-import {NumberInput} from 'modul-components';
+import {NumberInput} from 'modul-ui';
 import {validation, CustomFocusable} from './../validationHelpers';
 
 
