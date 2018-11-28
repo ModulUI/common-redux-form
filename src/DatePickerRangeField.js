@@ -67,7 +67,7 @@ class DatePickerRangeField extends React.Component {
 				dateTo={dateTo}
 			/>
 		);
-	} 
+	}
 }
 
 export { DatePickerRangeField };

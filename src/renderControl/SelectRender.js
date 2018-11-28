@@ -7,11 +7,10 @@ import React from 'react'
 
 @validation({tips: true, dataOnWrapper: true})
 class SelectRender extends React.Component {
-
-	constructor(props) {
-		super(props);
-		this.focusator = new CustomFocusable();
-	}
+    constructor(props) {
+        super(props);
+        this.focusator = new CustomFocusable();
+    }
 
     componentDidMount() {
         // TODO: исправить, костыль
@@ -78,12 +77,17 @@ class SelectRender extends React.Component {
     };
 
     onChangeSelect = (obj) => {
-        const {input: fieldInput, onSelectChange, valueKey = 'value'} = this.props;
+        const {input: fieldInput, onSelectChange, noChange, valueKey = 'value'} = this.props;
 
         let {onChange: onInputChange} = fieldInput;
-        onInputChange(obj ? obj[valueKey] : null);
-        if (onSelectChange)
-            onSelectChange(obj);
+		if (onSelectChange) {
+			onSelectChange(obj);
+		}
+
+		// noChange - не вызывать onChange redux-form, полностью переопределяем с помощью onSelectChange
+		if (!noChange) {
+			onInputChange(obj ? obj[valueKey] : null);
+		}
     }
 }
 

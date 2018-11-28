@@ -44,6 +44,6 @@ export class TextAreaField extends React.Component {
 					   type={type}
 					   validate={this.validators}
 					   component={component}
-		/>);
+			/>);
 	}
 }

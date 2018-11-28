@@ -10,7 +10,7 @@ class TextAreaRender extends React.Component {
 	}
 
 	render() {
-		const {input, label, className, type, validator, disabled, rows, wrap}=this.props;
+		const {input, label, className, type, validator, disabled, rows, wrap, maxLength}=this.props;
 		const {tooltip, addClassName}=validator;
 		const classNames = [className || '', addClassName || ''].join(' ');
 		return (
@@ -18,10 +18,12 @@ class TextAreaRender extends React.Component {
 					  ref={input => this.focusator.init(input)}
 					  className={classNames}
 					  placeholder={label}
-					  type={type} disabled={disabled}
+					  type={type}
+					  disabled={disabled}
 					  {...tooltip}
 					  rows={rows}
 					  wrap={wrap}
+					  maxLength={maxLength}
 			/>
 		);
 	}

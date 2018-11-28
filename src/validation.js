@@ -20,7 +20,7 @@ export function validation({tips} = {tips: true}) {
             constructor(props, context) {
                 super(props, context);
                 this.validatorId = getRandomKey();
-                this.tooltipId = `tooltip_${this.validatorId}`;
+				this.tooltipId = `tooltip_${this.validatorId}`;
             }
 
             componentDidUpdate(prevProps) {
@@ -54,8 +54,8 @@ export function validation({tips} = {tips: true}) {
             }
 
             showTooltipError() {
-                const {meta: {touched, error, submitFailed}} = this.props;
-                return error && (submitFailed || touched);
+                const {meta: {active, touched, error, submitFailed}} = this.props;
+                return error && ((submitFailed || touched) && active);
             }
 
             getTooltipProps(tipPlace) {
@@ -102,10 +102,11 @@ export function validation({tips} = {tips: true}) {
 
                 const tooltip = this.getTooltipConfig({id: this.tooltipId});
 
-                const isError = showErrorBorder({valid, error, active, visited, submitFailed});
+                const isError = showErrorBorder({valid, error, touched, submitFailed});
                 const isSuccess = showSuccessBorder({valid, visited, error, active});
 
-                const additionalClassName = classNames({error: isError}, {success: isSuccess});
+				const additionalClassName = classNames({error: isError}, {success: isSuccess});
+
 
                 const validator = {
                     error: error,

@@ -8,13 +8,12 @@ export const ifCondition = (condition, value, defaultVal = '') => {
  * Подсветка бордера инпута
  * @param error - есть ошибка
  * @param valid - валидное состояние
- * @param active - фокус в поле
  * @param visited - поле было под фокусом
  * @param submitFailed - не удачная отправка формы
  * @returns {*}
  */
-export const showErrorBorder = ({valid, error, active, visited, submitFailed}) => {
-	return (!valid || error) && (visited || submitFailed) && !active;
+export const showErrorBorder = ({valid, error, touched, submitFailed}) => {
+	return (!valid || error) && (touched || submitFailed);
 };
 
 /**

@@ -46,9 +46,8 @@ class UploadField extends React.Component {
 		return (
 			<Field
 				{...props}
-			  	component={UploadRender}
-			  	validate={this.validators}
-
+				component={UploadRender}
+				validate={this.validators}
 			/>
 		);
 	}

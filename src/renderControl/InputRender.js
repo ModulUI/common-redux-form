@@ -39,6 +39,7 @@ class InputRender extends React.Component {
 						{...tooltip} />
 			);
 		}
+
 		return (
 			<input {...input}
 					ref={input => this.focusator.init(input)}

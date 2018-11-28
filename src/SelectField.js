@@ -84,12 +84,15 @@ export class SelectField extends React.Component {
 		wrapperStyle: PropTypes.object,       // optional style to apply to the component wrapper
 		creatable: PropTypes.bool, 			  // если можно вводить свой вариант (текст)
 		required: PropTypes.string,
-		requiredDisable: PropTypes.bool
+		requiredDisable: PropTypes.bool,
+		noChange: PropTypes.bool,				// не вызывать onChange Fielda
 	};
 
 	static defaultProps = {
 		validate: [],
 		placeholder: '',
+		clearValueText: 'Очистить',
+		noChange: false,
 	};
 
 	static propTypes = inputFieldShape;
@@ -120,7 +123,7 @@ export class SelectField extends React.Component {
 	}
 
 	render() {
-		const {onChange, onBlur, ...props} = this.props;
+		const {onChange, onBlur, required, ...props} = this.props;
 
 		return ( <Field {...props}
 						component={SelectRender}
@@ -130,3 +133,6 @@ export class SelectField extends React.Component {
 		/>);
 	}
 }
+
+
+
