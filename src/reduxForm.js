@@ -12,10 +12,8 @@ export function searchFocusString(errors) {
         return firstField;
     } else if (typeof errors[firstField] === 'object')
 		if (Array.isArray(errors[firstField])) {
-			return errors[firstField].filter(item => {
-				if (item)
-					return item;
-			});
+    		const fieldIndex = errors[firstField].findIndex(item => !!item);
+			return firstField + '[' + fieldIndex + ']';
 		} else {
 			let obj = {...errors};
 			let flag = true;
