@@ -8,26 +8,32 @@ export function searchFocusString(errors) {
     if (!firstField)
         return null;
 
-    if ((typeof errors[firstField] == 'string') || (typeof errors[firstField] == 'object' && 'key' in errors[firstField])) {
+    if ((typeof errors[firstField] === 'string') || (typeof errors[firstField] === 'object' && 'key' in errors[firstField])) {
         return firstField;
-    } else if (typeof errors[firstField] == 'object') {
-        let obj = {...errors};
-        let flag = true;
-        let i = 0;
-        let fieldString = '';
-        let field = undefined;
-        while (flag && i < 6) {
-            field = Object.keys(obj)[0];
-            fieldString += (fieldString ? '.' : '') + field;
-            if (typeof obj[field] == 'string') {
-                flag = false;
-            } else {
-                obj = obj[field];
-            }
-            i++;
-        }
-        return fieldString;
-    }
+    } else if (typeof errors[firstField] === 'object')
+		if (Array.isArray(errors[firstField])) {
+			return errors[firstField].filter(item => {
+				if (item)
+					return item;
+			});
+		} else {
+			let obj = {...errors};
+			let flag = true;
+			let i = 0;
+			let fieldString = '';
+			let field = undefined;
+			while (flag && i < 6) {
+				field = Object.keys(obj)[0];
+				fieldString += (fieldString ? '.' : '') + field;
+				if (typeof obj[field] === 'string') {
+					flag = false;
+				} else {
+					obj = obj[field];
+				}
+				i++;
+			}
+			return fieldString;
+		}
 }
 
 const focusOnFailed = (errors, form, dispatch) => {
