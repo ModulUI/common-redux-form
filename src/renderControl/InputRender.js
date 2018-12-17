@@ -16,11 +16,11 @@ class InputRender extends React.Component {
         readOnly: false,
         className: '',
         addClassName: '',
-        maxLength: 255
+        maxLength: 255,
     };
 
     render() {
-        const {input, label, className, type, validator, disabled, readOnly, maxLength, autoComplete, mask} = this.props;
+        const {input, label, className, type, validator, disabled, readOnly, maxLength, autoComplete, mask, onKeyDown} = this.props;
         const {tooltip, addClassName} = validator;
 		const classNames = [className, addClassName].join(' ');
 		if (mask) {
@@ -36,6 +36,7 @@ class InputRender extends React.Component {
 						maxLength={maxLength === 0 ? 100000 : maxLength}
 						mask={mask}
 						guide={false}
+						{...maskProps}
 						{...tooltip} />
 			);
 		}
@@ -50,6 +51,7 @@ class InputRender extends React.Component {
 					disabled={disabled}
 					readOnly={readOnly}
 					maxLength={maxLength === 0 ? 100000 : maxLength}
+				    onKeyDown={onKeyDown}
 					{...tooltip} />
 		);
     }

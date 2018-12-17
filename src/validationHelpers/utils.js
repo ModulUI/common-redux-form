@@ -95,3 +95,11 @@ export const normalizeOnlyLatinNumberSymb = (value) => {
 	return '';
 };
 
+// normalize, только цифры
+export const normalizeOnlyNumber = (value) => {
+	if (value && value.replace) {
+		return value.replace(/[^0-9]/gi, "");
+	}
+	return '';
+};
+

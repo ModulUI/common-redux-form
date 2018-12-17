@@ -13,7 +13,7 @@ import classNames from "classnames";
  *
  * tips - включены ли подскажи тултипа
  */
-export function validation({tips} = {tips: true}) {
+export function validation({tips, hideOnClickOutside} = {tips: true, hideOnClickOutside: true}) {
     return (WrappedComponent) => {
         class radValidateTooltip extends React.Component {
 
@@ -67,7 +67,7 @@ export function validation({tips} = {tips: true}) {
                     className: "error",
                     trigger: "focus",
                     showInitial: true,
-                    hideOnClickOutside: true,
+                    hideOnClickOutside: hideOnClickOutside,
                     html: true
                 };
             }
