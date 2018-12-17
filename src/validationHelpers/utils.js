@@ -36,6 +36,9 @@ export const isValidNumber = val => {
 	return /^(0(\.|,)\d+|[1-9]+[0-9]*((\.|,)\d+)?|0)$/.test(+val);
 };
 
+// мин длинна
+export const validateMinLength = (count, text) => (val) => val.length < count ? text : undefined;
+
 export const isZeroNumberFloat = val => {
 	if (isEmpty(val))
 		return true;
