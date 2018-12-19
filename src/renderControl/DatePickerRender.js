@@ -60,6 +60,7 @@ class DatePickerRender extends React.Component {
 				datepicker={datepicker}
 				format={formatPicker}
 				yearStart={1900}
+				mask
 			/>
 		);
 	}
