@@ -88,12 +88,12 @@ export const normalizeOnlyLatinNumber = (value) => {
 };
 
 // только латинские буквы, числа, спецсимволы + не чувствителен к регистру
-export const validatorOnlyLatinNumberSymb = value => /^([\-?:\"`'().,‘+a-z0-9 '])*$/gi.test(value);
+export const validatorOnlyLatinNumberSymb = value => /^([\/\-?:\"`'().,‘+a-z0-9 '])*$/gi.test(value);
 
 // normalize, не даёт ввести кириллицу, можно спец-символы
 export const normalizeOnlyLatinNumberSymb = (value) => {
 	if (value.replace) {
-		return value.replace(/[^\-?:\"`'().,‘+a-z0-9 ']/gi, "");
+		return value.replace(/[^/\-?:\"`'().,‘+a-z0-9 ']/gi, "");
 	}
 	return '';
 };
