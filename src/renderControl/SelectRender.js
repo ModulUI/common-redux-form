@@ -43,7 +43,7 @@ class SelectRender extends React.Component {
                 className={classNames}
                 {...input}
                 {...selectOptions}
-                inputProps={{...tooltip}}
+                tooltipProps={tooltip}
                 onFocus={this.onFocus}
                 valueKey={valueKey}
                 onChange={this.onChangeSelect}

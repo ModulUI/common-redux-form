@@ -1,6 +1,6 @@
 {
   "name": "common-redux-form",
-  "version": "0.0.32",
+  "version": "0.0.33",
   "description": "package with fields for redux-form",
   "main": "./lib",
   "module": "./src",
@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "react-text-mask": "^5.4.3",
-    "modul-components": "^0.0.80",
+    "modul-components": "^0.0.81",
     "classnames": "^2.2.6"
   },
   "devDependencies": {
