@@ -17,7 +17,11 @@ class DatePickerRender extends React.Component {
 		disabled: PropTypes.bool,
 		timepicker: PropTypes.any,
 		datepicker: PropTypes.any,
-		formatPicker: PropTypes.any
+		formatPicker: PropTypes.any,
+		insideParent: PropTypes.bool,
+	};
+	static defaultProps = {
+		insideParent: false,
 	};
 
 	constructor(props) {
@@ -34,7 +38,8 @@ class DatePickerRender extends React.Component {
 			disabled,
 			timepicker,
 			datepicker,
-			formatPicker
+			formatPicker,
+			insideParent,
 		} = this.props;
 		const {
 			tooltip,
@@ -60,6 +65,8 @@ class DatePickerRender extends React.Component {
 				datepicker={datepicker}
 				format={formatPicker}
 				yearStart={1900}
+				insideParent={insideParent}
+				mask
 			/>
 		);
 	}
