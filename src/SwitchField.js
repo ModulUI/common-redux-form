@@ -21,11 +21,11 @@ class SwitchField extends React.Component {
 	render() {
 		const {name, switchItems} = this.props;
 
-		return (<div class="switch_group">
+		return (<div className="switch_group">
 			{switchItems.map(item => (
-				<div class="switch_item" key={item.id}>
+				<div className="switch_item" key={item.id}>
 					<Field name={name} id={item.id} component="input" type="radio" value={item.value}/>
-					<label for={item.id}>{item.label}</label>
+					<label htmlFor={item.id}>{item.label}</label>
 				</div>)
 			)}
 		</div>)
