@@ -36,7 +36,6 @@ class InputRender extends React.Component {
 						maxLength={maxLength === 0 ? 100000 : maxLength}
 						mask={mask}
 						guide={false}
-						{...maskProps}
 						{...tooltip} />
 			);
 		}
