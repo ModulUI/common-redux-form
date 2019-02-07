@@ -65,7 +65,7 @@ export function validation({tips, hideOnClickOutside} = {tips: true, hideOnClick
                     preventHideOnFocus: false,
                     getContent: ::self.getError,
                     className: "error",
-                    trigger: "focus",
+                    trigger: "manual",
                     showInitial: true,
                     hideOnClickOutside: hideOnClickOutside,
                     html: true
@@ -79,7 +79,7 @@ export function validation({tips, hideOnClickOutside} = {tips: true, hideOnClick
                     preventHideOnFocus: false,
                     getContent: ::self.getError,
                     className: "",
-                    trigger: "focus",
+                    trigger: "manual",
                     showInitial: true,
                     hideOnClickOutside: true,
                     html: true
