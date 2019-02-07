@@ -66,7 +66,7 @@ export function validation({tips, dataOnWrapper} = {tips: true, dataOnWrapper: f
                     preventHideOnFocus: false,
                     getContent: ::self.getError,
                     className: "error",
-                    trigger: "focus",
+                    trigger: "manual",
                     showInitial: true,
                     hideOnClickOutside: true,
                     html: true
@@ -80,7 +80,7 @@ export function validation({tips, dataOnWrapper} = {tips: true, dataOnWrapper: f
                     preventHideOnFocus: false,
                     getContent: ::self.getError,
                     className: "",
-                    trigger: "focus",
+                    trigger: "manual",
                     showInitial: true,
                     hideOnClickOutside: true,
                     html: true
