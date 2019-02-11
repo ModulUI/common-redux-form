@@ -10,7 +10,7 @@ class AmountRender extends React.Component {
 	}
 
 	render() {
-		const {input, label, className, type, validator, disabled} = this.props;
+		const {input, label, className, type, validator, disabled, maxLength} = this.props;
 		const {tooltip, addClassName} = validator;
 		const classNames = [className || '', addClassName || ''].join(' ');
 		return (
@@ -21,6 +21,7 @@ class AmountRender extends React.Component {
 				{...input}
         className={classNames}
         placeholder={label}
+        maxLength={maxLength}
         type={type} disabled={disabled}
 				{...tooltip}
       />
