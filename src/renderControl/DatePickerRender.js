@@ -40,6 +40,7 @@ class DatePickerRender extends React.Component {
 			datepicker,
 			formatPicker,
 			insideParent,
+			allowDates,
 		} = this.props;
 		const {
 			tooltip,
@@ -66,6 +67,7 @@ class DatePickerRender extends React.Component {
 				format={formatPicker}
 				yearStart={1900}
 				insideParent={insideParent}
+				allowDates={allowDates}
 				mask
 			/>
 		);
