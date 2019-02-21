@@ -10,3 +10,4 @@ export {NumberField} from './NumberField';
 export {TextAreaField} from './TextAreaField';
 export {SwitchField} from './SwitchField';
 export {CheckboxField} from './CheckboxField';
+export {SnilsField} from './SnilsField';
