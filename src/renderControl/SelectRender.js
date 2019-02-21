@@ -26,6 +26,7 @@ class SelectRender extends React.Component {
             onSelectBlur,
             valueKey = 'value',
             required,
+			wrapperClassName,
             ...selectOptions
         } = this.props;
 
@@ -43,6 +44,7 @@ class SelectRender extends React.Component {
         return (
             <Select
                 ref={s => this.refInput = s}
+				wrapperClassName={wrapperClassName}
                 className={classNames}
                 {...input}
                 {...selectOptions}

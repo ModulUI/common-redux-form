@@ -86,6 +86,7 @@ export class SelectField extends React.Component {
 		required: PropTypes.string,
 		requiredDisable: PropTypes.bool,
 		noChange: PropTypes.bool,				// не вызывать onChange Fielda
+		wrapperClassName: PropTypes.string,   	// класс для обёртки с div внутри Select modul-ui
 	};
 
 	static defaultProps = {
@@ -93,6 +94,7 @@ export class SelectField extends React.Component {
 		placeholder: '',
 		clearValueText: 'Очистить',
 		noChange: false,
+		wrapperClassName: '',
 	};
 
 	static propTypes = inputFieldShape;
