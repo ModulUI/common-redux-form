@@ -5,7 +5,7 @@ import SnilsRender from './renderControl/SnilsRender';
 import { validator, isEmpty } from './validationHelpers/utils';
 import { getRequiredValidator } from './validationHelpers/formFieldHelpers';
 
-const isValidSnils = snils => {
+const isValidLength = snils => {
 	if (isEmpty(snils)) {
 		return true;
 	}
@@ -16,6 +16,34 @@ const isValidSnils = snils => {
 		return /^[0-9]{11}$/.test(snils);
 	}
 
+	return false;
+};
+
+const isCorrectSum = snils => {
+	if (snils.length != 11 && !/^\d*$/.test(snils)) return false;
+
+	if (snils < 1001998) return false;
+
+	var part = snils.slice(0, 9),
+		sum = 0;
+	for (var i = 0; i < part.length; i++) {
+		sum = sum + part[i] * (part.length - i);
+	}
+	if (sum < 100 && sum == snils.slice(-2)) {
+		return true;
+	}
+	if (sum == 100 || sum == 101) {
+		return '00' == snils.slice(-2);
+	}
+	if (sum > 101) {
+		sum = sum % 101;
+		if (sum < 100 && sum == snils.slice(-2)) {
+			return true;
+		}
+		if (sum == 100 || sum == 101) {
+			return '00' == snils.slice(-2);
+		}
+	}
 	return false;
 };
 
@@ -31,7 +59,8 @@ export class SnilsField extends React.Component {
 
 	static defaultProps = {
 		validate: [],
-		invalidError: 'Укажите 11 цифр номера СНИСЛ',
+		invalidLength: 'Снилс должен содержать 11 цифр',
+		notCorrectSum: 'Не совпадает контрольная сумма',
 	};
 
 	constructor(props) {
@@ -46,15 +75,16 @@ export class SnilsField extends React.Component {
 	}
 
 	_createValidators(props) {
-		const { required, validate, requiredDisable, invalidError } = props;
+		const { required, validate, requiredDisable, invalidLength, notCorrectSum } = props;
 
 		this.validators.length = 0;
 
 		const requiredFieldValidator = getRequiredValidator({ required, requiredDisable });
 
-		const validSnils = validator(invalidError, isValidSnils);
+		const validLength = validator(invalidLength, isValidLength);
+		const correctSum = validator(notCorrectSum, isCorrectSum);
 
-		this.validators.push(...requiredFieldValidator, validSnils);
+		this.validators.push(...requiredFieldValidator, validLength, correctSum);
 
 		if (validate) {
 			if (Array.isArray(validate)) {
