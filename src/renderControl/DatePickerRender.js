@@ -19,6 +19,7 @@ class DatePickerRender extends React.Component {
 		datepicker: PropTypes.any,
 		formatPicker: PropTypes.any,
 		insideParent: PropTypes.bool,
+		minDate: PropTypes.string,
 	};
 	static defaultProps = {
 		insideParent: false,
@@ -41,6 +42,7 @@ class DatePickerRender extends React.Component {
 			formatPicker,
 			insideParent,
 			allowDates,
+			minDate,
 		} = this.props;
 		const {
 			tooltip,
@@ -68,6 +70,7 @@ class DatePickerRender extends React.Component {
 				yearStart={1900}
 				insideParent={insideParent}
 				allowDates={allowDates}
+				minDate={minDate}
 				mask
 			/>
 		);
