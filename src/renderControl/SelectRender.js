@@ -79,7 +79,7 @@ class SelectRender extends React.Component {
     };
 
     onChangeSelect = (obj) => {
-        const {input: fieldInput, onSelectChange, noChange, valueKey = 'value'} = this.props;
+        const { input: fieldInput, onSelectChange, noChange, valueKey = 'value', multi } = this.props;
 
         let {onChange: onInputChange} = fieldInput;
 		if (onSelectChange) {
@@ -88,7 +88,11 @@ class SelectRender extends React.Component {
 
 		// noChange - не вызывать onChange redux-form, полностью переопределяем с помощью onSelectChange
 		if (!noChange) {
-			onInputChange(obj ? obj[valueKey] : null);
+			if (multi) {
+				onInputChange(obj);
+			} else {
+				onInputChange(obj ? obj[valueKey] : null);
+			}
 		}
     }
 }
