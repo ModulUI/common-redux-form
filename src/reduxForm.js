@@ -8,9 +8,9 @@ export function searchFocusString(errors) {
     if (!firstField)
         return null;
 
-    if ((typeof errors[firstField] === 'string') || (typeof errors[firstField] === 'object' && 'key' in errors[firstField])) {
+    if ((typeof errors[firstField] === 'string') || (typeof errors[firstField] === 'object' && 'key' in (errors[firstField] || {}))) {
         return firstField;
-    } else if (typeof errors[firstField] === 'object')
+    } else if (errors[firstField] && typeof errors[firstField] === 'object')
 		if (Array.isArray(errors[firstField])) {
     		const fieldIndex = errors[firstField].findIndex(item => !!item);
 			return firstField + '[' + fieldIndex + ']';
