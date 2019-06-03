@@ -10,8 +10,9 @@ class UploadRender extends React.Component {
         this.focusator = new InputFocusable();
     }
 	render() {
-		const { input, meta, validator, disabled, children, onDropFile, ...props } = this.props;
+		const { input, meta, validator, disabled, children, onDropFile, className, ...props } = this.props;
 		const { tooltip, addClassName } = validator;
+		const classNames = [className || '', addClassName || ''].join(' ');
 
 		return (
 			<DropZone
@@ -24,7 +25,7 @@ class UploadRender extends React.Component {
 						onDropFile(files);
 					}
 				}}
-				className={addClassName}
+				className={classNames}
 				{...props}
 				{...tooltip}
 			>{children}</DropZone>
