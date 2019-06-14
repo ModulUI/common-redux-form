@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { DatePicker } from 'modul-components';
-import { validation, CustomFocusable } from '../validationHelpers';
+import {DatePicker} from 'modul-components';
+import {validation, CustomFocusable} from '../validationHelpers';
 
 
 @validation({tips: true})
@@ -29,6 +29,25 @@ class DatePickerRender extends React.Component {
 		this.focusator = new CustomFocusable();
 	}
 
+	handleBlur = event => {
+		const {input: fieldInput, onBlurDate} = this.props;
+		const {onBlur: onInputBlur} = fieldInput;
+
+		onInputBlur(event);
+		if (onBlurDate)
+			onBlurDate(event);
+	};
+
+	handleChange = (obj) => {
+		const {input: fieldInput, onChangeDate} = this.props;
+
+		let {onChange: onInputChange} = fieldInput;
+		if (onChangeDate) {
+			onChangeDate(obj);
+		}
+		onInputChange(obj);
+	};
+
 	render() {
 		const {
 			input,
@@ -40,6 +59,9 @@ class DatePickerRender extends React.Component {
 			datepicker,
 			formatPicker,
 			insideParent,
+			onChangeDate,
+			onBlurDate,
+
 		} = this.props;
 		const {
 			tooltip,
@@ -53,10 +75,12 @@ class DatePickerRender extends React.Component {
 		return (
 			<DatePicker
 				ref={(field) => {
-          this.focusator.init(field);
-        }}
+					this.focusator.init(field);
+				}}
 				autoComplete='off'
 				{...input}
+				onBlur={this.handleBlur}
+				onChange={this.handleChange}
 				className={classNames}
 				placeholder={label}
 				disabled={disabled}
