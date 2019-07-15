@@ -10,7 +10,7 @@ class UploadRender extends React.Component {
         this.focusator = new InputFocusable();
     }
 	render() {
-		const { input, meta, validator, disabled, children, onDropFile, className, ...props } = this.props;
+		const { input, meta, hideTips, validator, disabled, children, onDropFile, className, ...props } = this.props;
 		const { tooltip, addClassName } = validator;
 		const classNames = [className || '', addClassName || ''].join(' ');
 
