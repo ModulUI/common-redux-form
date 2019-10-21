@@ -28,14 +28,13 @@ export function validation({tips, hideOnClickOutside} = {tips: true, hideOnClick
                 const {meta: {active: wasActive}} = prevProps;
 
                 if (submitFailed && error && !wasActive && active) {
-					// PV-29349 бесконечное переключение фокуса между двумя невалидными инпутами, убрал таймаут
-                    // setTimeout(() => {
+                    setTimeout(() => {
                         if (this.wrappedEl) {
                             if (!this.wrappedEl.focusator)
                                 throw 'Component does not contain @focusator:IFocusableElement';
                             this.wrappedEl.focusator.setFocus();
                         }
-                    // }, 0);
+                    }, 0);
                 }
             }
 
