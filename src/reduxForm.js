@@ -13,7 +13,8 @@ export function searchFocusString(errors) {
     } else if (errors[firstField] && typeof errors[firstField] === 'object')
 		if (Array.isArray(errors[firstField])) {
     		const fieldIndex = errors[firstField].findIndex(item => !!item);
-			return firstField + '[' + fieldIndex + ']';
+			const fieldName = Object.keys(errors[firstField][fieldIndex])[0];
+			return `${firstField}[${fieldIndex}].${fieldName}`;
 		} else {
 			let obj = {...errors};
 			let flag = true;
