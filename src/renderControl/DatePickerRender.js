@@ -21,9 +21,11 @@ class DatePickerRender extends React.Component {
 		insideParent: PropTypes.bool,
 		minDate: PropTypes.string,
 		onShow: PropTypes.func,
+		readOnly: PropTypes.bool
 	};
 	static defaultProps = {
 		insideParent: false,
+		readOnly: false,
 	};
 
 	constructor(props) {
@@ -45,6 +47,7 @@ class DatePickerRender extends React.Component {
 			allowDates,
 			minDate,
 			onShow,
+			readOnly,
 		} = this.props;
 		const {
 			tooltip,
@@ -74,6 +77,7 @@ class DatePickerRender extends React.Component {
 				allowDates={allowDates}
 				minDate={minDate}
 				onShow={onShow}
+				readOnly={readOnly}
 				mask
 			/>
 		);
