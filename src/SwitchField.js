@@ -15,6 +15,7 @@ export class SwitchField extends React.Component {
 		name: PropTypes.string.isRequired,
 		onChange: PropTypes.func,
 		disabled: PropTypes.bool,
+		className: PropTypes.string,
 	};
 
 	constructor(props) {
@@ -22,9 +23,9 @@ export class SwitchField extends React.Component {
 	}
 
 	render() {
-		const {name, switchItems, onChange, disabled} = this.props;
+		const {name, switchItems, onChange, disabled, className} = this.props;
 
-		return (<div className="switch_group">
+		return (<div className={classNames('switch_group', className)}>
 			{switchItems.map(item => (
 				<div className={classNames('switch_item', { 'disable_block': item.disabled || disabled })} key={item.id}>
 					<Field name={name} id={item.id} component="input" type="radio" value={item.value} onChange={onChange} />
