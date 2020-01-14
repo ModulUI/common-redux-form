@@ -19,9 +19,11 @@ class DatePickerRender extends React.Component {
 		datepicker: PropTypes.any,
 		formatPicker: PropTypes.any,
 		insideParent: PropTypes.bool,
+		readOnly: PropTypes.bool
 	};
 	static defaultProps = {
 		insideParent: false,
+		readOnly: false,
 	};
 
 	constructor(props) {
@@ -59,6 +61,7 @@ class DatePickerRender extends React.Component {
 			datepicker,
 			formatPicker,
 			insideParent,
+			readOnly,
 			onChangeDate,
 			onBlurDate,
 
@@ -90,6 +93,7 @@ class DatePickerRender extends React.Component {
 				format={formatPicker}
 				yearStart={1900}
 				insideParent={insideParent}
+				readOnly={readOnly}
 				mask
 			/>
 		);
