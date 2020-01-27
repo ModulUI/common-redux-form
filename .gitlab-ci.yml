@@ -5,7 +5,7 @@ include:
 .default:
   image: node:8.11.3
   tags: [Frontend, Docker, Linux]
-  only: [master]
+  only: [react-16]
 
 stages:
   - install
