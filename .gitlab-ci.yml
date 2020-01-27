@@ -1,0 +1,40 @@
+include:
+  - project: "qa/gitlab-ci-templates"
+    file: "frontend-template.yml"
+
+.default:
+  image: node:8.11.3
+  tags: [Frontend, Docker, Linux]
+  only: [master]
+
+stages:
+  - install
+  - build
+  - publish
+
+install:
+  extends:
+    - .default
+    - .node_modules_cache_push_template
+  stage: install
+  script:
+    - npm install
+
+build:
+  extends:
+    - .default
+    - .node_modules_cache_pull_template
+  stage: build
+  script:
+    - npm run build
+    - cp package.json lib/
+
+publish:
+  extends:
+    - .default
+    - .node_modules_cache_pull_template
+  stage: publish
+  script:
+    - cd lib/
+    - npm config set "//registry.npmjs.org/:_authToken" "$AUTH_TOKEN"
+    - npm publish

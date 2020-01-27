@@ -1,6 +1,6 @@
 {
   "name": "@modul/redux-form",
-  "version": "1.0.22",
+  "version": "1.0.23",
   "description": "package with fields for redux-form",
   "module": "./src",
   "scripts": {
